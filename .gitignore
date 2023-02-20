@@ -1,0 +1,5 @@
+#packer auto generate file
+/plugin
+
+# misc
+.DS_Store
