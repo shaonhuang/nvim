@@ -99,6 +99,11 @@ return require("packer").startup(function(use)
 
 	use({ "nyoom-engineering/oxocarbon.nvim" })
 
+	-- version contral tool
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

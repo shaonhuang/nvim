@@ -24,4 +24,8 @@ function proxy
   echo "Current: http_proxy=$http_proxy https_proxy=$https_proxy"
 end
 
+alias tn="tmux new -s (pwd | sed 's/.*\///g')"
+
+alias clr="clear"
+
 set -gx EDITOR nvim
