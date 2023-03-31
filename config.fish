@@ -26,6 +26,13 @@ end
 
 alias tn="tmux new -s (pwd | sed 's/.*\///g')"
 
-alias clr="clear"
+alias cl="clear"
+
+alias v="nvim"
+
+alias gst="git switch"
+alias grs="git restore"
+
+alias gco="git checkout"
 
 set -gx EDITOR nvim
