@@ -54,4 +54,27 @@ keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>")
 keymap.set("n", "<leader>gl", "<cmd>Neogit log<cr>")
 keymap.set("n", "<leader>gp", "<cmd>Neogit push<cr>")
 keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
+keymap.set("n", "<leader>gc", "<cmd>DiffviewClose<cr>")
 keymap.set("n", "<leader>gD", "<cmd>DiffviewOpen master<cr>")
+
+-- debugger dap dap-ui require plug notify
+-- -- Set breakpoints, get variable values, step into/out of functions, etc.
+keymap.set("n", "<Leader>dl", function()
+	require("dap.ui.widgets").hover()
+end)
+keymap.set("n", "<leader>dc", "<cmd>DapContinue<CR>")
+keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>")
+keymap.set("n", "<leader>dn", "<cmd>DapStepOver<CR>")
+keymap.set("n", "<leader>di", "<cmd>DapStepInto<CR>")
+keymap.set("n", "<leader>do", "<cmd>DapStepOut<CR>")
+keymap.set("n", "<leader>dC", function()
+	dap.clear_breakpoints()
+	require("notify")("Breakpoints cleared", "warn")
+end)
+
+-- Close debugger and clear breakpoints
+keymap.set("n", "<leader>de", function()
+	require("dap").clear_breakpoints()
+	require("dap").terminate()
+	require("notify")("Debugger session ended", "warn")
+end)

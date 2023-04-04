@@ -107,6 +107,21 @@ return require("packer").startup(function(use)
 	-- vim plugins for git command
 	use("tpope/vim-fugitive")
 
+	-- debugger
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+
+	use({
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+	})
+
+	use("theHamsta/nvim-dap-virtual-text")
+
+	use("rcarriga/nvim-notify")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

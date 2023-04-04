@@ -1,5 +1,5 @@
--- import lualine plugin safely
-local status, lualine = pcall(require, "neogit")
+-- import neogit plugin safely
+local status, neogit = pcall(require, "neogit")
 if not status then
 	return
 end
