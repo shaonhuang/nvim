@@ -81,3 +81,6 @@ keymap.set("n", "<leader>de", function()
 	require("dap").terminate()
 	require("notify")("Debugger session ended", "warn", { title = "Dap Terminate" })
 end)
+
+-- flod code
+keymap.set("n", "zA", "<cmd>set foldmethod=indent<CR>")

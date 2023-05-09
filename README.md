@@ -10,3 +10,6 @@ sudo apt-get install ripgrep
 Macos:
 brew install fd
 brew install ripgrep
+
+fish install zoxide
+fisher install kidonng/zoxide.fish
