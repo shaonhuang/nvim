@@ -16,7 +16,16 @@ if not mason_null_ls_status then
 	return
 end
 
-mason.setup()
+mason.setup({
+	log_level = vim.log.levels.DEBUG,
+	registries = {
+		"github:mason-org/mason-registry",
+	},
+	providers = {
+		"mason.providers.registry-api",
+		"mason.providers.client",
+	},
+})
 
 mason_lspconfig.setup({
 	ensure_install = {
