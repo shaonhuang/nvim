@@ -1,11 +1,12 @@
--- import neogit plugin safely
-local status, neogit = pcall(require, "neogit")
-if not status then
-	return
-end
+return {
+	"NeogitOrg/neogit",
+	dependencies = {
+		"nvim-lua/plenary.nvim", -- required
+		"sindrets/diffview.nvim", -- optional - Diff integration
 
-neogit.setup({
-	integration = {
-		diffview = true,
+		-- Only one of these is needed, not both.
+		"nvim-telescope/telescope.nvim", -- optional
+		"ibhagwan/fzf-lua", -- optional
 	},
-})
+	config = true,
+}
