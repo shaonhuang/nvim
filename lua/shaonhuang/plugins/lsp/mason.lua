@@ -5,29 +5,26 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
-    -- import mason
-    local mason = require("mason")
-
-    -- import mason-lspconfig
-    local mason_lspconfig = require("mason-lspconfig")
-
+    -- import modules
+    local mason                = require("mason")
+    local mason_lspconfig      = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
 
-    -- enable mason and configure icons
+    -- enable mason and customize UI icons
     mason.setup({
       ui = {
         icons = {
-          package_installed = "✓",
-          package_pending = "➜",
+          package_installed   = "✓",
+          package_pending     = "➜",
           package_uninstalled = "✗",
         },
       },
     })
 
+    -- configured LSP servers in lspconfig.lua, and unable automatic setup
     mason_lspconfig.setup({
-      -- list of servers for mason to install
       ensure_installed = {
-        "tsserver",
+        "ts_ls",
         "html",
         "cssls",
         "tailwindcss",
@@ -38,19 +35,22 @@ return {
         "prismals",
         "pyright",
       },
-      -- auto-install configured servers (with lspconfig)
-      automatic_installation = true, -- not the same as ensure_installed
+      automatic_enable = false, -- not invoke vim.lsp.enable()
     })
 
+    -- configured commonly used formatters and linters
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint", -- python linter
-        "eslint_d", -- js linter
+        "prettier", -- JS/TS fomatter
+        "stylua",   -- Lua formatter
+        "isort",    -- Python import sorter
+        "black",    -- Python formatter
+        "pylint",   -- Python lint
+        "eslint_d", -- JS/TS lint
       },
+      -- if you want these tools to be able to use after installation, you could add
+      -- automatic_installation = true,
     })
   end,
 }
+
